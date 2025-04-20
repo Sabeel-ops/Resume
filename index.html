@@ -3,128 +3,1749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PayPal Landing Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+    --paypal-blue: #001c64;
+    --paypal-light-blue: #0070ba;
+    --paypal-dark-blue: #0070e0;
+    --paypal-bg: #f5f7fa;
+    --paypal-white: #fff;
+    --paypal-border: #e1e7eb;
+    --footer-bg: #061e44;
+    --font-family-base: PayPalOpen-Regular, "Helvetica", Arial, sans-serif;
+    --font-family-strong: PayPalOpen-Bold, "Helvetica", Arial, sans-serif;
+    --font-family-headline: PayPalOpen-Bold, "Helvetica", Arial, sans-serif;
+}
+
+/* --- PayPal Blue Carousel Section --- */
+.pp-blue-carousel-section {
+  background: linear-gradient(180deg, #001435 43.89%, #003087 102%);
+  padding: 64px 0 48px 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  height: 550px; /* Let height fit the content */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.carousel-outer-wrap {
+  transform: scale(1.25);
+  transform-origin: top center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.pp-blue-carousel-header {
+  max-width: 1200px;
+  margin: 10px 0 32px 100px;
+  padding: 0 32px 0 20px; /* Left margin of 20px */
+  text-align: left;       /* Align header content to the left */
+}
+.pp-blue-carousel-header h2 {
+  color: #fff;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 10px 0 0 100px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-align: left;       /* Ensure h2 is left-aligned */
+}
+.pp-blue-carousel-carousel-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+.carousel-nav-btn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 8px;
+  z-index: 2;
+  transition: background 0.2s;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-nav-btn:active {
+  background: #eaf6fb;
+}
+.carousel-nav-btn svg {
+  display: block;
+}
+.pp-blue-carousel-track-wrap {
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  width: 100%;
+}
+.pp-blue-carousel-track {
+  display: flex;
+  gap: 1.3rem;
+  min-width: 0;
+  max-width: 100%;
+  padding-left: 20px; /* Shift cards 20px to the right */
+  padding: 0 0 0 20px;
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+}
+.pp-blue-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.pp-blue-carousel-card {
+  flex: 0 0 19.5rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 22px 20px 24px 20px;
+  color: #001c64;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 120px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.pp-blue-carousel-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #001c64;
+  margin-bottom: 0;
+  line-height: 1.18;
+  word-break: break-word;
+  text-align: left;
+}
+.pp-blue-carousel-card-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  background: #eaf6fb;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.nav-btn .fa-chevron-down {
+  transition: transform 0.3s;
+}
+
+.nav-item:hover .nav-btn .fa-chevron-down,
+.nav-item:focus-within .nav-btn .fa-chevron-down {
+  transform: rotate(180deg);
+}
+.pp-blue-carousel-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  transform: translateY(-4px) scale(1.02);
+  text-decoration: none;
+}
+.pp-blue-carousel-card:hover .pp-blue-carousel-card-arrow {
+  background: #cce5fa;
+}
+.pp-blue-carousel-card-arrow svg {
+  display: block;
+  width: 24px;
+  height: 15px;
+  stroke: #0070ba;
+}
+@media (max-width: 900px) {
+  .pp-blue-carousel-header {
+    padding: 0 12px;
+  }
+  .pp-blue-carousel-carousel-wrap {
+    padding: 0 4px;
+  }
+  .pp-blue-carousel-card {
+    flex: 0 0 70vw;
+    padding: 18px 10px 18px 14px;
+    font-size: 1rem;
+  }
+  .pp-blue-carousel-card-arrow {
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .pp-blue-carousel-section {
+    padding: 32px 0 24px 0;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+  .pp-blue-carousel-header h2 {
+    font-size: 1.3rem;
+  }
+  .pp-blue-carousel-card {
+    flex: 0 0 85vw;
+    padding: 14px 8px 14px 12px;
+    font-size: 0.95rem;
+  }
+  .pp-blue-carousel-card-arrow {
+    width: 28px;
+    height: 28px;
+    right: 6px;
+    bottom: 6px;
+  }
+  .pp-blue-carousel-card-arrow svg {
+    width: 16px;
+    height: 10px;
+  }
+}
+/* --- End PayPal Blue Carousel Section --- */
+
+/* ...existing code... */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-base);
+    background: #fff;
+    color: var(--paypal-blue);
+}
+h1, h2, h3, h4, h5, h6, .section-title, .split-section-title, .pp-blue-carousel-header h2 {
+    font-family: var(--font-family-headline);
+    font-weight: 800;
+}
+
+b, strong, .split-section-btn, .section-btn, .footer-links-row1, .footer-links-row2, .dropdown-card-title {
+    font-family: var(--font-family-strong);
+    font-weight: 700;
+}
+/* Header */
+.header {
+    background: var(--paypal-white);
+    border-bottom: 1px solid var(--paypal-border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 24px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 32px;
+    box-shadow: 0 1px 8px rgba(0,0,5,5);
+}
+.logo img {
+    height: 32px;
+    width: auto;
+    margin-right: 0;
+}
+nav {
+    flex: 1;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+nav ul li {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.nav-btn {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    color: #001c64;
+    padding: 0 18px;
+    border-radius: 22px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0;
+    cursor: pointer;
+    gap: 6px;
+}
+.nav-btn.active,
+.nav-btn:hover {
+    background: #eaf6fb;
+    color: #003087;
+    font-weight: 800;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 24px;
+}
+.login-btn,
+.signup-btn {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 22px;
+    padding: 6px 20px;
+    height: 36px;
+    min-width: 80px;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: none;
+}
+.signup-btn:hover {
+    background: var(--paypal-dark-blue);
+    color: #fff;
+    border-color: var(--paypal-dark-blue);
+}
+.login-btn {
+    border: 2px solid #003087;
+    background: #fff;
+    color: #003087;
+}
+.login-btn:hover {
+    background: #eaf6fb;
+    color: #003087;
+    border-color: #003087;
+}
+.signup-btn {
+    background: #003087;
+    color: #fff;
+    border: 2px solid #003087;
+}
+/* Dropdowns */
+.nav-item {
+    position: relative;
+}
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 64px;
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-radius: 0 0 24px 24px;
+    padding: 0;
+    z-index: 100;
+    border-top: 1px solid #e1e7eb;
+}
+.nav-item:hover .dropdown-menu,
+.nav-item:focus-within .dropdown-menu {
+    display: block;
+}
+.dropdown-content {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0 40px 0;
+    gap: 48px;
+}
+.dropdown-left {
+    flex: 2;
+    min-width: 320px;
+    padding-left: 48px;
+}
+.dropdown-right {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 48px;
+}
+.dropdown-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #003087;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dropdown-arrow {
+    color: #0070ba;
+    font-size: 1.2rem;
+    margin-left: 4px;
+}
+.dropdown-section {
+    margin-bottom: 32px;
+}
+.dropdown-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #003087;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.dropdown-divider {
+    border: none;
+    border-top: 1px solid #e1e7eb;
+    margin: 8px 0 16px 0;
+}
+.dropdown-link {
+    display: block;
+    font-size: 18px;
+    color: #003087;
+    text-decoration: none;
+    font-weight: 400;
+    margin-bottom: 12px;
+    padding: 0;
+    transition: color 0.2s;
+}
+.dropdown-link:hover {
+    color: #0070ba;
+    text-decoration: underline;
+}
+.dropdown-card {
+    display: flex;
+    align-items: center;
+    background: #f7f8fa;
+    border-radius: 16px;
+    padding: 18px 24px;
+    font-weight: 700;
+    color: #003087;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+    gap: 16px;
+    min-width: 220px;
+}
+.split-section {
+  background: #0070e0;
+  padding: 64px 0;
+  color: #fff;
+}
+.split-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Move content to the left */
+  gap: 64px;
+  padding: 0 32px;
+}
+.split-section-image {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.split-section-image img {
+  width: 340px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+  background: ##003087;
+}
+.split-section-content {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+  justify-content: center;
+  min-width: 320px;
+  max-width: 440px;
+  margin-left: 32px;
+  text-align: left;
+}
+.split-section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.1;
+  color: #fff;
+  text-align: left;
+}
+.split-section-desc {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: #fff;
+  text-align: left;
+}
+.split-section-btn {
+  background: #fff;
+  color: #003087;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 32px;
+  padding: 16px 36px;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  cursor: pointer;
+}
+.split-section-btn:hover {
+  background: #eaf6fb;
+  color: #003087;
+}
+@media (max-width: 900px) {
+  .split-section-inner {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 12px;
+  }
+  .split-section-image {
+    justify-content: center;
+  }
+  .split-section-content {
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+    max-width: 95vw;
+  }
+  .split-section-title,
+  .split-section-desc {
+    text-align: center;
+  }
+}
+.dropdown-card-icon {
+    margin-right: 16px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.dropdown-card-icon img {
+    width: 28px;
+    height: 28px;
+}
+.dropdown-card-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #003087;
+}
+.dropdown-card-arrow {
+    color: #0070ba;
+    font-size: 1.3rem;
+    margin-left: 16px;
+}
+/* Hero Section */
+.hero-section {
+    background: #fff;
+    text-align: center;
+    padding: 40px 0 0 0;
+    position: relative;
+}
+.hero-section .hero-subtitle {
+    color: var(--paypal-blue);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.hero-section .hero-title {
+  
+    color: var(--paypal-blue);
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0 0 24px 0;
+    line-height: 1.08;
+    letter-spacing: -1px;
+}
+.hero-section .hero-app-btn {
+    background: var(--paypal-blue);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 28px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 32px;
+    margin-top: 8px;
+}
+.hero-section .hero-app-btn:hover {
+    background: var(--paypal-dark-blue);
+}
+.section-paypalme-bg {
+  background: url('https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/bnpl-tablet-image.jpg?quality=75&width=1800&format=webp') center center/cover no-repeat;
+  position: relative;
+  min-height: 600px;
+  padding: 0;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.section-paypalme-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 30, 68, 0.10); /* semi-dark overlay for readability */
+  z-index: 0;
+}
+.section-paypalme-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 60px 80px; /* left and bottom margin as in the screenshot */
+  box-sizing: border-box;
+  min-height: 600px;
+}
+.section-paypalme-content > div {
+  max-width: 480px;
+}
+.section-paypalme-bg .section-title {
+  color: #fff;
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  text-align: left;
+  line-height: 1.08;
+}
+.section-paypalme-bg .section-desc-large {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 28px;
+  text-align: left;
+}
+.section-paypalme-bg .section-btn {
+  background: #fff;
+  color: #003087;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 24px;
+  padding: 14px 36px;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+.bnpl-image-oval-container {
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bnpl-image-oval {
+  width: 50vw;
+  max-width: 50vw;
+  height: auto;
+  display: block;
+  border-radius: 120px;
+  object-fit: cover;
+}
+.section-paypalme-bg .section-btn:hover {
+  background: #eaf6fb;
+  color: #003087;
+}
+@media (max-width: 900px) {
+  .section-paypalme-bg,
+  .section-paypalme-content {
+    min-height: 380px;
+    padding: 0 0 32px 18px;
+  }
+  .section-paypalme-bg .section-title {
+    font-size: 2rem;
+  }
+  .section-paypalme-content > div {
+    max-width: 95vw;
+  }
+}
+.hero-image-wrap {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-image-wrap .inline-video {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+/* Features Section */
+.section.blue {
+    background: #0070e0;
+    color: #fff;
+    padding: 56px 0 56px 0;
+}
+.section .section-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+.features-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 0;
+}
+.feature-card {
+    background: #fff;
+    color: #003087;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 32px 24px 32px 24px;
+    flex: 1 1 0;
+    min-width: 260px;
+    max-width: 320px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.feature-card .feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.feature-card .feature-arrow {
+    color: #0070ba;
+    font-size: 1.3rem;
+    margin-left: 8px;
+}
+.feature-card .feature-desc {
+    font-size: 15px;
+    color: #2c2e2f;
+    font-weight: 400;
+}
+/* White Section */
+.section {
+    padding: 56px 0;
+    background: #fff;
+    text-align: center;
+}
+.section .section-desc {
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #2c2e2f;
+    font-weight: 400;
+}
+.section .section-btn {
+    background: var(--paypal-blue);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+.section .section-btn:hover {
+    background: #001c64;
+}
+.section img {
+    margin-top: 40px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 24px;
+}
+/* Blue Section */
+.section.blue .section-btn {
+    background: #fff;
+    color: #003087;
+}
+.section.blue .section-btn:hover {
+    background: #eaf6fb;
+    color: #0070ba;
+}
+._video-scrubbing-background-video-container_1g8kj_8,
+._video-scrubbing-background-video-container_1g8kj_8 .video-frame-wrapper,
+._video-scrubbing-background-video-container_1g8kj_8 .inline-video {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  display: block !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+}
+
+._video-scrubbing-background-video-container_1g8kj_8 {
+  overflow: hidden;
+  padding: 0;
+}
+/* Dark Section */
+.section.dark {
+    background: #061e44;
+    color: #fff;
+    padding: 56px 0;
+}
+.section.dark .section-title {
+    color: #fff;
+}
+.section.dark .section-btn {
+    background: #fff;
+    color: #003087;
+}
+.section.dark .section-btn:hover {
+    background: #eaf6fb;
+    color: #0070ba;
+}
+/* Discover Section */
+/* Add to your <style> section */
+/* ...existing code... */
+.discover-section {
+  background: #fff;
+  padding: 0px 0px 0px 0px;
+  text-align: center;
+  transform: scale(0.7);
+  transform-origin: top center;
+}
+.discover-header {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 24px;
+  text-align: left;
+}
+.discover-header h2 {
+  color: #001c64;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.discover-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.discovery-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f6fa;
+  border-radius: 28px;
+  padding: 36px 40px 36px 40px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #001c64;
+  text-decoration: none;
+  box-shadow: none;
+  transition: box-shadow 0.18s, transform 0.18s;
+  min-width: 0;
+  min-height: 80px;
+}
+.discovery-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #001c64;
+  text-align: left;
+  letter-spacing: -0.5px;
+}
+.discovery-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d6eaff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  margin-left: 24px;
+  transition: background 0.18s;
+}
+.discovery-card-arrow svg {
+  width: 28px;
+  height: 17px;
+}
+.discovery-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-2px) scale(1.01);
+  text-decoration: none;
+}
+.discovery-card:hover .discovery-card-arrow {
+  background: #b3dbff;
+}
+@media (max-width: 900px) {
+  .discover-header h2 {
+    font-size: 2rem;
+  }
+  .discover-grid {
+    gap: 20px 16px;
+    padding: 0 8px;
+  }
+  .discovery-card {
+    padding: 24px 18px 24px 18px;
+    font-size: 1.1rem;
+    border-radius: 18px;
+  }
+  .discovery-card-title {
+    font-size: 1.1rem;
+  }
+  .discovery-card-arrow {
+    width: 36px;
+    height: 36px;
+    margin-left: 12px;
+  }
+  .discovery-card-arrow svg {
+    width: 20px;
+    height: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .discover-section {
+    padding: 32px 0 40px 0;
+  }
+  .discover-header {
+    padding: 0 8px;
+    margin-bottom: 24px;
+  }
+  .discover-header h2 {
+    font-size: 1.2rem;
+  }
+  .discover-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 0 4px;
+  }
+  .discovery-card {
+    padding: 16px 10px 16px 14px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+  .discovery-card-title {
+    font-size: 1rem;
+  }
+  .discovery-card-arrow {
+    width: 28px;
+    height: 28px;
+    margin-left: 8px;
+  }
+  .discovery-card-arrow svg {
+    width: 14px;
+    height: 8px;
+  }
+}
+/* ...existing code... */
+/* QR Code in Join Millions Section */
+.join-millions-qr {
+    margin: 24px auto 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.join-millions-qr img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+/* Footer */
+footer {
+  background: linear-gradient(180deg, #001435 43.89%, #003087 102%);
+    color: #fff;
+    padding: 0;
+    font-family: 'Open Sans', Arial, sans-serif;
+    
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0 16px 0;
+    text-align: left;
+}
+.footer-logo-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.footer-logo-row img {
+    height: 28px;
+    margin-right: 16px;
+}
+.footer-links-row1,
+.footer-links-row2 {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.checkout-video-section {
+  position: relative;
+  width: 100vw;
+  min-height: 520px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.checkout-video-overlay {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.checkout-video-overlay .section-title,
+.checkout-video-overlay .section-desc,
+.checkout-video-overlay .section-btn {
+  pointer-events: auto;
+}
+
+
+
+.checkout-video-overlay .section-btn {
+  margin-top: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+._video-scrubbing-background-video-container_1g8kj_8,
+._video-scrubbing-background-video-container_1g8kj_8 .video-frame-wrapper,
+._video-scrubbing-background-video-container_1g8kj_8 .inline-video {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  display: block !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+}
+
+._video-scrubbing-background-video-container_1g8kj_8 {
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .checkout-video-overlay {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .checkout-video-overlay .section-title {
+    font-size: 1.5rem;
+  }
+}
+.footer-links-row1 a,
+.footer-links-row2 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: text-decoration 0.2s;
+}
+.footer-links-row1 a:hover,
+.footer-links-row2 a:hover {
+    text-decoration: underline;
+}
+.footer-divider {
+    border: none;
+    border-top: 1px solid #2d4373;
+    margin: 12px 0 18px 0;
+}
+.footer-links-row2 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.footer-flag {
+    margin-left: auto;
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    background: #fff;
+    border: 1px solid #e1e7eb;
+    object-fit: cover;
+}
+.footer-legal {
+    color: #fff;
+    font-size: 13px;
+    margin-top: 0;
+    font-weight: 400;
+    line-height: 1.7;
+}
+.footer-legal b {
+    font-weight: 700;
+}
+.footer-qr-card {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 12px;
+    text-align: center;
+    width: auto;
+    z-index: 9999;
+}
+@media (max-width: 700px) {
+    .footer-qr-card {
+        right: 12px;
+        bottom: 12px;
+        width: 80px;
+        padding: 8px;
+    }
+    .footer-qr-card img {
+        width: 56px;
+        height: 56px;
+    }
+}
+.footer-qr-card img {
+    width: 80px;
+    height: 80px;
+}
+.footer-qr-card p {
+    margin: 8px 0 0 0;
+    font-size: 13px;
+    color: var(--paypal-blue);
+    font-weight: 600;
+}
+@media (max-width: 1100px) {
+    .features-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+   
+    .dropdown-content {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 0 32px 0;
+    }
+    .dropdown-left, .dropdown-right {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 0 8px;
+    }
+    .logo {
+        margin-right: 0;
+    }
+    .header-actions {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+    nav ul {
+        gap: 0;
+    }
+    .nav-btn {
+        padding: 0 10px;
+        font-size: 15px;
+        height: 36px;
+    }
+    .footer-container {
+        padding: 32px 16px 12px 16px;
+    }
+    .footer-links-row1,
+    .footer-links-row2 {
+        gap: 14px;
+        font-size: 13px;
+    }
+    .footer-flag {
+        width: 20px;
+        height: 14px;
+    }
+}
+@media (max-width: 700px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 0 10px;
+    }
+    nav ul {
+        gap: 10px;
+    }
+    .hero-section {
+        padding: 24px 0 0 0;
+    }
+    .hero-section .hero-title {
+        font-size: 28px;
+    }
+   
+    .features-row, .discover-grid {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .footer-links-row1,
+    .footer-links-row2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .footer-flag {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+    .dropdown-menu {
+        min-width: 0;
+        width: 100vw;
+        left: -20vw;
+        border-radius: 0 0 16px 16px;
+    }
+    .dropdown-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 0 24px 0;
+    }
+    .dropdown-left, .dropdown-right {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 24px 8px 8px 8px;
+    }
+    .footer-links-row1,
+    .footer-links-row2 {
+        font-size: 12px;
+    }
+    .footer-legal {
+        font-size: 11px;
+    }
+}
+    </style>
+    <script>
+      
+        // filepath: c:\Sample\paypal-landing-page\src\index.html
+        document.addEventListener('DOMContentLoaded', function() {
+          const track = document.getElementById('carouselTrack');
+          const prevBtn = document.getElementById('carouselPrevBtn');
+          const nextBtn = document.getElementById('carouselNextBtn');
+          const card = track.querySelector('.pp-blue-carousel-card');
+          let scrollAmount = card ? card.offsetWidth + 22 : 320;
+        
+          prevBtn.addEventListener('click', () => {
+            track.parentElement.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          });
+          nextBtn.addEventListener('click', () => {
+            track.parentElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+  let lastScrollY = window.scrollY;
+  let currentOffset = 0;
+  const overlay = document.querySelector('.checkout-video-overlay');
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    // Move up on scroll down, down on scroll up, clamp between -40px and 40px
+    if (scrollY > lastScrollY) {
+      currentOffset = Math.max(currentOffset - 2, -40);
+    } else {
+      currentOffset = Math.min(currentOffset + 2, 40);
+    }
+    overlay.style.transform = `translateY(${currentOffset}px)`;
+    lastScrollY = scrollY;
+  });
+});
+        </script>
 </head>
 <body>
-    <section class="relative flex flex-col  justify-center w-full h-screen">
-        <div class="absolute left-0 h-screen aspect-auto overflow-hidden -z-50">
-            <img  class=""src="bg2.svg"/>
-            <img  class=""src="bg2.svg"/>
-            <img  class=""src="bg2.svg"/>
-            </div>
-        <div class="bg-white flex flex-col gap-3 justify-center items-center">
-            <img  class="w-[6rem] "src="Sexy.png"/>
-        <h1 class=" font-bold text-gray-700 text-center text-3xl">Sabeel EK</h1>
-        <p class=" text-gray-500 text-center">Developer/Designer</p>
-            <div class="flex justify-center">
-            <a href="mailto:sabeelek.mec@gmail.com" class=" px-3"><img src="mail icon.svg"></a>
-            <a href="https://www.linkedin.com/in/sabeel-ek-a673a41b9/" target="_blank" class=" px-3"><img src="linkedin logo.svg"></a>
-            <a href="https://dribbble.com/MaskedCreations" class="px-3 stroke-black "><img  class="stroke-white"src="icons8-dribbble-svg.svg"/></a>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+           <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo">
         </div>
-        
-    </section>
-    <section class="flex flex-col items-center ">
-
-
-        
-
-
-    <div>
-    <h1 class=" font-bold text-gray-700 text-center text-3xl py-2.5">About Me</h1>
-    </div>
-    <div class="flex md:gap-10 lg:gap-10 md:my-5 lg:my-10">
-        <div class="flex hidden lg:block lg:flex">
-     <p class="text-yellow-300 text-9xl"><</p> 
-     <p class="text-red-500 text-8xl">></p>  
-        </div>
-    <div class="flex gap-5 flex-col md:flex-row md:flex-row md:shadow-2xl lg:shadow-2xl justify-center md:w-[40rem] lg:w-[55rem] rounded-xl md:p-5 lg:p-5 p-5">
-        <p class="text-gray-500">I'm a tech enthusiast with expertise in web development, design, and management. Skilled in Python, HTML, CSS, ReactJS, and design tools like Adobe Photoshop and Figma. I excel in team leadership, process automation, and user-centric design.</p>
-        <div class="flex flex-col gap-2">
-            <p class="text-gray-700">Development</p>
-            <div class="bg-yellow-300 h-1 w-[20rem] rounded-[999rem] "></div>
-            <p class="text-gray-700">UI Design</p>
-            <div class="bg-red-400 h-1 w-[20rem] rounded-[999rem]"></div>
-            <p class="text-gray-700">Graphic Design</p>
-            <div class="bg-purple-500 h-1 w-[20rem] rounded-[999rem]"></div>
-        </div>
-    </div>
-    </div>
-    
-    </section>
-    <section class="py-2.5 flex flex-col items-center mb-10">
-
-        <h1 class=" font-bold text-gray-700 text-center text-3xl py-5">Experience</h1>
-        <div class="lg:my-10 flex flex-col md:gap-5 lg:gap-10  lg:flex-row lg:flex-wrap justify-center">
-
-
-
-            <div class="w-[25rem] md:shadow-2xl lg:shadow-2xl p-5 rounded-xl lg:w-[40rem] md:w-[40rem]">
-                <div class="">
-                <div class="flex gap-7">
-                    <svg class="fill-red-500" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-                        <title>icons8-education-48</title>
-                        <style>
-                            .s0 { opacity: 1;fill: #EF4444 } 
-                        </style>
-                        <path id="Path 0" fill-rule="evenodd" class="s0" d="m23.8 9.1c0.6-0.1 5.1 1.5 9.9 3.6 4.9 2 9.5 4.2 10.3 4.9 0.9 0.8 1.2 1.9 0.7 2.9-0.4 0.8-2.1 1.9-3.7 2.5-2.6 0.9-3 1.5-3.3 5.2-0.1 3-0.8 4.6-2.7 6-1.4 1-4.5 2.3-7 2.8-2.5 0.5-6.1 0.5-8 0.1-1.9-0.5-4.3-1.3-5.4-1.7-1.7-0.8-1.8-0.6-1.1 2.6 0.5 2.6 0.3 3.8-0.9 4.8-0.9 0.6-2.1 1-2.6 0.7-0.6-0.3-0.8-3.9 0.3-19l-3.4-1.5c-2.2-1-3.4-2.2-3.4-3.4 0-1.4 1.6-2.7 9.5-6.6l6.7 3c5.4 2.4 6.5 3.3 5.6 4.3-1 0.9-2.3 0.7-6.5-1.1-3.7-1.6-6.2-2.2-8.3-1.7-1.6 0.4-3 1-3.2 1.3-0.1 0.4 3.5 2.4 16.2 8.4l8.1-3.3c4.4-1.9 8.2-3.9 8.3-4.4 0.1-0.6-3.3-2.5-7.6-4.3-6.1-2.6-8.3-3.2-10.3-2.5-1.4 0.5-3.1 0.8-3.7 0.6-0.7-0.2-1.4-0.7-1.5-1.2-0.1-0.5 1.1-1.4 2.8-1.9 1.6-0.6 3.5-1.1 4.2-1.1zm-7.8 23.4c1.7 0.8 5.3 1.5 8 1.5 2.8 0 6.4-0.7 8-1.5 2.1-1.1 3-2.2 3-4 0-1.4-0.3-2.4-0.8-2.3-0.4 0.2-2.7 1.1-5.2 2.2-4.4 1.8-4.6 1.8-9.5 0-2.7-1.1-5.3-2-5.6-2.2-0.4-0.2-0.7 0.8-0.8 2.2-0.1 1.9 0.7 3 2.9 4.1z"/>
-                    </svg>
-                    <p class="text-gray-500 mt-1">2005 - 2018</p>
-                </div>
-                <div class="px-10 border-l-2 ml-6 border-red-500">
-                    <h1 class="text-lg font-bold text-gray-700">Schooling</h1>
-                    <p class="text-gray-500">My educational journey started at Sree Narayana Trust Central School, Kollam, where I completed my Class X education under CBSE, achieving a commendable score of 92.8% in the year 2018.</p>
-                </div>
-                </div>
-                <div class="pt-5">
-                    <div class="flex gap-5">
-                        <svg class="fill-red-500" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-                            <title>icons8-education-48</title>
-                            <style>
-                                .s0 { opacity: 1;fill: #EF4444 } 
-                            </style>
-                            <path id="Path 0" fill-rule="evenodd" class="s0" d="m23.8 9.1c0.6-0.1 5.1 1.5 9.9 3.6 4.9 2 9.5 4.2 10.3 4.9 0.9 0.8 1.2 1.9 0.7 2.9-0.4 0.8-2.1 1.9-3.7 2.5-2.6 0.9-3 1.5-3.3 5.2-0.1 3-0.8 4.6-2.7 6-1.4 1-4.5 2.3-7 2.8-2.5 0.5-6.1 0.5-8 0.1-1.9-0.5-4.3-1.3-5.4-1.7-1.7-0.8-1.8-0.6-1.1 2.6 0.5 2.6 0.3 3.8-0.9 4.8-0.9 0.6-2.1 1-2.6 0.7-0.6-0.3-0.8-3.9 0.3-19l-3.4-1.5c-2.2-1-3.4-2.2-3.4-3.4 0-1.4 1.6-2.7 9.5-6.6l6.7 3c5.4 2.4 6.5 3.3 5.6 4.3-1 0.9-2.3 0.7-6.5-1.1-3.7-1.6-6.2-2.2-8.3-1.7-1.6 0.4-3 1-3.2 1.3-0.1 0.4 3.5 2.4 16.2 8.4l8.1-3.3c4.4-1.9 8.2-3.9 8.3-4.4 0.1-0.6-3.3-2.5-7.6-4.3-6.1-2.6-8.3-3.2-10.3-2.5-1.4 0.5-3.1 0.8-3.7 0.6-0.7-0.2-1.4-0.7-1.5-1.2-0.1-0.5 1.1-1.4 2.8-1.9 1.6-0.6 3.5-1.1 4.2-1.1zm-7.8 23.4c1.7 0.8 5.3 1.5 8 1.5 2.8 0 6.4-0.7 8-1.5 2.1-1.1 3-2.2 3-4 0-1.4-0.3-2.4-0.8-2.3-0.4 0.2-2.7 1.1-5.2 2.2-4.4 1.8-4.6 1.8-9.5 0-2.7-1.1-5.3-2-5.6-2.2-0.4-0.2-0.7 0.8-0.8 2.2-0.1 1.9 0.7 3 2.9 4.1z"/>
-                        </svg>
-                        <p class="text-gray-500 mt-1">2020 - Present</p>
+        <nav>
+            <ul>
+                <li class="nav-item">
+                  <button class="nav-btn">Personal <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-left">
+                        <div class="dropdown-title">
+                          PayPal for You <span class="dropdown-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Shop and Buy</div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Shop with PayPal</a>
+                        </div>
+                      </div>
+                      <div class="dropdown-right">
+                        <div class="dropdown-card">
+                          <span class="dropdown-card-icon"><img src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-how-it-works.svg" alt="" /></span>
+                          <span>
+                            <span class="dropdown-card-title">How PayPal Works</span>
+                            <span class="dropdown-card-arrow"><i class="fas fa-arrow-right"></i></span>
+                          </span>
+                        </div>
+                        <div class="dropdown-card">
+                          <span class="dropdown-card-icon"><img src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-app.svg" alt="" /></span>
+                          <span>
+                            <span class="dropdown-card-title">Get the App</span>
+                            <span class="dropdown-card-arrow"><i class="fas fa-arrow-right"></i></span>
+                          </span>
+                        </div>
+                        <div class="dropdown-card">
+                          <span class="dropdown-card-icon"><img src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/protection-blue.svg" alt="" /></span>
+                          <span>
+                            <span class="dropdown-card-title">PayPal Buyer Protection</span>
+                            <span class="dropdown-card-arrow"><i class="fas fa-arrow-right"></i></span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div class="px-10 border-l-2 ml-6 border-red-500">
-                        <h1 class="text-lg font-bold text-gray-700">Bachelor's Degree</h1>
-                        <p class="text-gray-500">I'm pursuing a B.Tech in Computer Science Engineering at Govt. Model Engineering College, Kochi, with a projected graduation in 2024 and a current aggregate of 7.9.</p>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-btn">Small Business <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-left">
+                        <div class="dropdown-title">
+                          PayPal for Business <span class="dropdown-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Accept Payments <span class="dropdown-arrow"><i class="fas fa-arrow-right"></i></span></div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Online Checkout</a>
+                          <a href="#" class="dropdown-link">Invoicing</a>
+                          <a href="#" class="dropdown-link">Make Payments</a>
+                        </div>
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Business Operations</div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Risk Management</a>
+                          <a href="#" class="dropdown-link">Accelerate Growth</a>
+                          <a href="#" class="dropdown-link">Streamline Operation</a>
+                          <a href="#" class="dropdown-link">Business Resource Centre</a>
+                          <a href="#" class="dropdown-link">Identify Verification (KYC)</a>
+                        </div>
+                      </div>
+                      <div class="dropdown-right">
+                        <div class="dropdown-card">
+                          <span class="dropdown-card-icon"><i class="fas fa-rocket"></i></span>
+                          <span>
+                            <span class="dropdown-card-title">Get Started</span>
+                            <span class="dropdown-card-arrow"><i class="fas fa-arrow-right"></i></span>
+                          </span>
+                        </div>
+                        <div class="dropdown-card">
+                          <span class="dropdown-card-icon"><i class="fas fa-credit-card"></i></span>
+                          <span>
+                            <span class="dropdown-card-title">Fees</span>
+                            <span class="dropdown-card-arrow"><i class="fas fa-arrow-right"></i></span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-btn">Enterprise <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-left">
+                        <div class="dropdown-title">
+                          PayPal for Enterprise <span class="dropdown-arrow"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Payments</div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Marketplaces & Partners</a>
+                          <a href="#" class="dropdown-link">Platforms & Solutions</a>
+                          <a href="#" class="dropdown-link">Accept PayPal</a>
+                          <a href="#" class="dropdown-link">Make Payments</a>
+                        </div>
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Risks & Operations</div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Manage Risk</a>
+                          <a href="#" class="dropdown-link">Accelerate Growth</a>
+                          <a href="#" class="dropdown-link">Streamline Operation</a>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-btn">Partners <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-left">
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Become a Partner <span class="dropdown-arrow"><i class="fas fa-arrow-right"></i></span></div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Partner Directory</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-btn">Useful Info <i class="fas fa-chevron-down"></i></button>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-left">
+                        <div class="dropdown-section">
+                          <div class="dropdown-section-title">Resources</div>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-link">Online Security</a>
+                          <a href="#" class="dropdown-link">Fraud Prevention</a>
+                          <a href="#" class="dropdown-link">Phishing</a>
+                          <a href="#" class="dropdown-link">PCI Compliance</a>
+                          <a href="#" class="dropdown-link">Foreign Inward Remittance Advise (FIRA)</a>
+                          <a href="#" class="dropdown-link">Help Centre</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="login-btn" onclick="window.location.href='https://www.paypal.com/signin'">Log In</button>
+            <button class="signup-btn" onclick="window.location.href='https://www.paypal.com/in/webapps/mpp/account-selection'">Sign Up</button>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-subtitle">The PayPal App</div>
+        <div class="hero-title">Pay easy, fast,<br>and secure.</div>
+        <button class="hero-app-btn" onclick="window.location.href='https://www.paypal.com/in/webapps/mpp/mobile-apps'">Get the App</button>
+        <div class="hero-image-wrap">
+          <video class="inline-video" playsinline="" loop="" preload="auto"
+              aria-label="An animation with a young couple showing what paying looks like on a smartphone screen."
+              poster="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/updated_hero/desktop-thumbnail-updated.png?quality=50" autoplay muted>
+              <source src="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/updated_hero/hero-homepage-uncookied-desktop_in-hevc-safari-updated.mp4" type="video/mp4">
+              <source src="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/updated_hero/hero-homepage-uncookied-desktop_in-vp9-chrome-updated.webm" type="video/webm">
+              <track kind="captions">
+          </video>
+      </div>
+    </section>
+    <!-- Features Section -->
+    
+    <section class="pp-blue-carousel-section">
+      <div class="carousel-outer-wrap">
+        <div class="pp-blue-carousel-header">
+          <h2>Your way to pay,<br>with&nbsp;PayPal</h2>
+        </div>
+        <div class="pp-blue-carousel-carousel-wrap">
+          <button class="carousel-nav-btn left" aria-label="Previous" id="carouselPrevBtn">
+            <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#eaf6fb"/><path d="M19 24l-7-8 7-8" stroke="#003087" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="pp-blue-carousel-track-wrap">
+            <div class="pp-blue-carousel-track" id="carouselTrack">
+              <a class="pp-blue-carousel-card" href="https://www.paypal.com/in/webapps/mpp/pay-online" target="_self">
+                <div class="pp-blue-carousel-card-title">Checkout with a few&nbsp;clicks</div>
+                <div class="pp-blue-carousel-card-arrow">
+                  <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M26 8.01221H1" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </div>
-
-
-
-
-
-        <div class="w-[25rem] md:shadow-2xl lg:shadow-2xl p-5 rounded-xl lg:w-[40rem] md:w-[40rem]">
-        <div class="">
-        <div class="flex gap-5">
-            <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 64 64" width="48px" height="48px"><path d="M 29 7 C 25.686 7 23 9.686 23 13 L 15 13 C 11.686 13 9 15.686 9 19 L 9 45 C 9 48.314 11.686 51 15 51 L 49 51 C 52.314 51 55 48.314 55 45 L 55 19 C 55 15.686 52.314 13 49 13 L 41 13 C 41 9.686 38.314 7 35 7 L 29 7 z M 29 11 L 35 11 C 36.104 11 37 11.895 37 13 L 27 13 C 27 11.895 27.896 11 29 11 z M 15 17 L 49 17 C 50.105 17 51 17.895 51 19 L 51 27.328125 C 47.860304 27.865386 40.276945 29 32 29 C 23.725715 29 16.142076 27.866066 13 27.328125 L 13 19 C 13 17.895 13.895 17 15 17 z M 13 31.384766 C 15.851521 31.855688 20.994182 32.574326 27 32.865234 L 27 33 C 27 34.105 27.895 35 29 35 L 34 35 C 35.105 35 36 34.105 36 33 L 36 32.917969 C 42.43805 32.665598 47.988855 31.881828 51 31.384766 L 51 45 C 51 46.105 50.105 47 49 47 L 15 47 C 13.895 47 13 46.105 13 45 L 13 31.384766 z"/></svg>
-            <p class="text-gray-500">2021 - Present</p>
-        </div>
-        <div class="px-10 border-l-2 ml-6 border-red-500">
-            <h1 class="text-lg font-bold text-gray-700">Novelty Ink USA</h1>
-            <p class="text-gray-500">Managed a team of 3 experts in mockup creation, listing, and personalization. Automated mockup creation and design creation using 
-                Photoshop scripts, saving over 4 hours daily, and drove 14,000+ Etsy store sales. </p>
-        </div>
-        </div>
-        <div class="pt-5">
-            <div class="flex gap-5">
-                <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 64 64" width="48px" height="48px"><path d="M 29 7 C 25.686 7 23 9.686 23 13 L 15 13 C 11.686 13 9 15.686 9 19 L 9 45 C 9 48.314 11.686 51 15 51 L 49 51 C 52.314 51 55 48.314 55 45 L 55 19 C 55 15.686 52.314 13 49 13 L 41 13 C 41 9.686 38.314 7 35 7 L 29 7 z M 29 11 L 35 11 C 36.104 11 37 11.895 37 13 L 27 13 C 27 11.895 27.896 11 29 11 z M 15 17 L 49 17 C 50.105 17 51 17.895 51 19 L 51 27.328125 C 47.860304 27.865386 40.276945 29 32 29 C 23.725715 29 16.142076 27.866066 13 27.328125 L 13 19 C 13 17.895 13.895 17 15 17 z M 13 31.384766 C 15.851521 31.855688 20.994182 32.574326 27 32.865234 L 27 33 C 27 34.105 27.895 35 29 35 L 34 35 C 35.105 35 36 34.105 36 33 L 36 32.917969 C 42.43805 32.665598 47.988855 31.881828 51 31.384766 L 51 45 C 51 46.105 50.105 47 49 47 L 15 47 C 13.895 47 13 46.105 13 45 L 13 31.384766 z"/></svg>
-                <p class="text-gray-500">2023 - Present</p>
+              </a>
+              <a class="pp-blue-carousel-card" href="https://www.paypal.com/in/webapps/mpp/send-payments-online" target="_self">
+                <div class="pp-blue-carousel-card-title">Confidently send payments</div>
+                <div class="pp-blue-carousel-card-arrow">
+                  <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M26 8.01221H1" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+              </a>
+              <a class="pp-blue-carousel-card" href="https://www.paypal.com/in/webapps/mpp/paypal-me" target="_self">
+                <div class="pp-blue-carousel-card-title">Create a PayPal.Me payment&nbsp;link</div>
+                <div class="pp-blue-carousel-card-arrow">
+                  <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M26 8.01221H1" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#003087" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </div>
+              </a>
             </div>
-            <div class="px-10 border-l-2 ml-6 border-red-500">
-                <h1 class="text-lg font-bold text-gray-700">Produze</h1>
-                <p class="text-gray-500">Made Amazon listing images and EBC content for multiple brands using Adobe Photoshop.</p>
-            </div>
-            </div>
+          </div>
+          <button class="carousel-nav-btn right" aria-label="Next" id="carouselNextBtn">
+            <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#eaf6fb"/><path d="M13 8l7 8-7 8" stroke="#003087" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
+      </div>
+      </section>
+    
+    <!-- Simplified Checkout Section -->
+    <section class="section checkout-video-section" style="background:#fff; position:relative; overflow:hidden;">
+      <div class="checkout-video-overlay">
+        <h1 class="section-title">Simplified online checkout</h1>
+        <p class="section-desc">Shop with your PayPal account at millions of brands worldwide. Rest <br> easy knowing PayPal Buyer Protection has your back while shopping.</p>
+        <button class="section-btn">Check Out With PayPal</button>
+      </div>
+      <div class="_video-scrubbing-background-video-container_1g8kj_8 video-frame video-frame-no-rounded-corners" style="min-height: auto; min-width: auto; opacity: 1; transform: none;">
+        <div class="video-frame-wrapper quantum-leap video-frame-wrapper-media-control-disable" role="none">
+          <video class="inline-video" playsinline="" loop="" preload="auto"
+            aria-label="A tile showing the purchase of a coffee machine with payment options such as PayPal."
+            poster="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/chapter2-desktop-poster.jpg?quality=50" autoplay muted>
+            <source src="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/section2-checkout-desktop-OPT.mp4" type="video/mp4">
+            <track kind="captions">
+          </video>
+        </div>
+      </div>
+    </section>
+    <!-- Send Payments Section -->
+    <section class="section blue split-section">
+      <div class="split-section-inner">
+        <div class="split-section-image">
+          <img
+            src="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/homepage-consumer-split-section1-image.png?quality=75&width=900"
+            srcset="
+              https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/homepage-consumer-split-section1-image.png?quality=75&width=300 300w,
+              https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/homepage-consumer-split-section1-image.png?quality=75&width=600 600w,
+              https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/homepage-consumer-split-section1-image.png?quality=75&width=900 900w
+            "
+            alt="Images of smiling people around a local currency graphic and a bill for paying for web design."
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="split-section-content">
+          <h2 class="split-section-title">Send payments<br>your way</h2>
+          <div class="split-section-desc">
+            You can pay for goods and services conveniently, from shopping at local businesses to paying individuals for projects.
+          </div>
+          <button class="split-section-btn">Send Payments Securely</button>
+        </div>
+      </div>
+    </section>
+    <!-- PayPal.Me Section -->
+    <section class="section-paypalme-bg">
+      <div class="section-paypalme-content">
+        <div>
+          <h1 class="section-title">Get paid<br>quickly with a link</h1>
+          <div class="section-desc section-desc-large">
+            Your personalized PayPal.Me link simplifies getting paid.
+          </div>
+          <button class="section-btn">Learn More About PayPal.Me</button>
+        </div>
+      </div>
+    </section>
+    <!-- Security Section -->
+    <section class="section" style="background:#fff;">
+        <div class="section-title">Safe, private, secure</div>
+        <div class="section-desc">Your data is encrypted, keeping your sensitive financial info safe.</div>
+        <button class="section-btn">More About Security</button>
+    </section>
+    <!-- Join Millions Section -->
+     <div class="bnpl-image-oval-container">
+  <img
+    src="https://www.paypalobjects.com/marketing/web23/in/ql/homepage-consumer/homepage-consumer-bnpl-tablet-images.jpg?quality=75&width=2100&format=webp"
+
+    alt="A man resting in a sofa and smiling into his mobile phone."
+    loading="lazy"
+    decoding="async"
+    class="bnpl-image-oval"
+  />
+</div>
+    <section class="section" style="background:#fff;">
+        <div class="section-title">Join the millions around<br>the world who love PayPal</div>
+        <p class="section-desc">Spend, send, and manage your transactions with ease—all in one<br>place. Download the app on your phone or sign up for free online.</p>
+        <div class="join-millions-qr">
+          <a href="https://imgbb.com/"><img src="https://i.ibb.co/qLTwtYLj/paypal-mid.png" alt="paypal-mid" ></a>
         </div>
     </section>
+    <!-- Discover Section -->
+    <section class="discover-section">
+        <div class="discover-header">
+          <h2>Discover even more ways to&nbsp;PayPal</h2>
+        </div>
+        <div class="discover-grid">
+          <a class="discovery-card" href="https://www.paypal.com/in/webapps/mpp/pay-with-app" target="_self">
+            <span class="discovery-card-title">The PayPal App</span>
+            <span class="discovery-card-arrow">
+              <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M26 8.01221H1" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+          <a class="discovery-card" href="https://www.paypal.com/in/webapps/mpp/how-paypal-works" target="_self">
+            <span class="discovery-card-title">How PayPal Works</span>
+            <span class="discovery-card-arrow">
+              <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M26 8.01221H1" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+          <a class="discovery-card" href="https://www.paypal.com/in/webapps/mpp/online-shopping" target="_self">
+            <span class="discovery-card-title">Shop and Buy</span>
+            <span class="discovery-card-arrow">
+              <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M26 8.01221H1" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+          <a class="discovery-card" href="https://www.paypal.com/in/webapps/mpp/send-payments-online" target="_self">
+            <span class="discovery-card-title">Send and Receive Payments</span>
+            <span class="discovery-card-arrow">
+              <svg width="28" height="17" viewBox="0 0 28 17" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M26 8.01221H1" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M19.5 1.01221L26.5 8.01221L19.5 15.0122" stroke="#0070ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container" style="position:relative;">
+        <div class="footer-logo-row">
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo">
+        </div>
+        <div class="footer-links-row1">
+          <a href="#">Help</a>
+          <a href="#">Contact us</a>
+          <a href="#">Fees</a>
+          <a href="#">Security</a>
+          <a href="#">Shop</a>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-links-row2">
+          <a href="#">About</a>
+          <a href="#">Newsroom</a>
+          <a href="#">Jobs</a>
+          <a href="#">Developers</a>
+          <a href="#">Partners</a>
+          <a href="#">Accesibility</a>
+          <a href="#">Cookies</a>
+          <a href="#">Privacy</a>
+          <a href="#">CSR</a>
+          <a href="#">Annual Returns</a>
+          <a href="#">Legal</a>
+          <img src="https://flagcdn.com/in.svg" alt="India Flag" class="footer-flag">
+        </div>
+        <div class="footer-legal">
+          PayPal Services in India are provided by PayPal Payments Private Limited (CIN U74990MH2009PTC194653). Users are advised to read the <b>terms and conditions</b> carefully.<br>
+          When you visit or interact with our sites, services, applications, tools or messaging, we or our authorised service providers may use cookies, web beacons, and other similar technologies for storing information to help provide you with a better, faster and safer experience and for advertising purposes. Learn more <b>here</b>.<br>
+          <br>
+          <sup>1</sup> BUYER PROTECTION - Buyer protection is available on eligible purchases only. Time limits and other terms apply. See the Buyer protection section of your local User Agreement for more information.<br>
+          All screen images are for illustrative purposes only.
+        </div>
+        <div class="footer-qr-card">
+            <img src="https://i.ibb.co/FL2qct53/paypal-qr-side.png" alt="QR Code">
+            <p>Get the App</p>
+        </div>
+      </div>
+    </footer>
+    <div id="paypal-chatbot-widget" style="position:fixed;bottom:24px;left:24px;z-index:10000;">
+      <button id="chatbot-toggle" style="background:#003087;color:#fff;border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 24px rgba(0,0,0,0.12);font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <i class="fas fa-comments"></i>
+      </button>
+      <div id="chatbot-window" style="display:none;flex-direction:column;position:absolute;bottom:70px;left:0;width:320px;max-width:90vw;height:420px;background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.18);overflow:hidden;">
+        <div style="background:#003087;color:#fff;padding:16px;font-weight:700;display:flex;align-items:center;justify-content:space-between;">
+          <span>PayPal Chat</span>
+          <button id="chatbot-close" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;">&times;</button>
+        </div>
+        <div id="chatbot-messages" style="flex:1;padding:16px;overflow-y:auto;font-size:15px;"></div>
+        <form id="chatbot-form" style="display:flex;border-top:1px solid #e1e7eb;">
+          <input id="chatbot-input" type="text" placeholder="Type your message..." style="flex:1;padding:12px;border:none;font-size:15px;outline:none;">
+          <button type="submit" style="background:#003087;color:#fff;border:none;padding:0 18px;font-size:16px;font-weight:700;cursor:pointer;">Send</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // filepath: c:\Sample\paypal-landing-page\src\index.html
+      const chatbotToggle = document.getElementById('chatbot-toggle');
+      const chatbotWindow = document.getElementById('chatbot-window');
+      const chatbotClose = document.getElementById('chatbot-close');
+      const chatbotForm = document.getElementById('chatbot-form');
+      const chatbotInput = document.getElementById('chatbot-input');
+      const chatbotMessages = document.getElementById('chatbot-messages');
     
-    
+      chatbotToggle.onclick = () => {
+        chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+      };
+      chatbotClose.onclick = () => {
+        chatbotWindow.style.display = 'none';
+      };
+      chatbotForm.onsubmit = function(e) {
+        e.preventDefault();
+        const userMsg = chatbotInput.value.trim();
+        if (!userMsg) return;
+        appendMessage('You', userMsg, true);
+        chatbotInput.value = '';
+        setTimeout(() => {
+          appendMessage('PayPal Bot', getBotReply(userMsg), false);
+        }, 600);
+      };
+      function appendMessage(sender, text, isUser) {
+        const msg = document.createElement('div');
+        msg.style.margin = '8px 0';
+        msg.style.textAlign = isUser ? 'right' : 'left';
+        msg.innerHTML = `<b style="color:${isUser ? '#003087' : '#222'}">${sender}:</b> <span>${text}</span>`;
+        chatbotMessages.appendChild(msg);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+      function getBotReply(input) {
+        input = input.toLowerCase();
+        if (input.includes('hello') || input.includes('hi')) return 'Hello! How can I help you with PayPal today?';
+        if (input.includes('app')) return 'You can download the PayPal app from the App Store or Google Play.';
+        if (input.includes('security')) return 'Your security is our priority. Learn more on our Security page.';
+        if (input.includes('signup') || input.includes('sign up')) return 'You can sign up for PayPal at the top right of this page!';
+        if (input.includes('send') || input.includes('payment')) return 'To send payments, click "Send Payments Securely" or use PayPal.Me.';
+        if (input.includes('help')) return 'Visit our Help Centre or ask your question here!';
+        return "I'm here to help! Please ask me anything about PayPal.";
+      }
+    </script>
 </body>
 </html>
